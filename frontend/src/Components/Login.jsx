@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Api from '../Api/Api';
 import logo from '../assets/logo.png';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
+  const navigate = useNavigate();
+
 
   const [message, setMessage] = useState('');
 
@@ -22,7 +25,8 @@ const Login = () => {
     try {
       const response = await axios.post(`${Api}/users/login`, formData);
       setMessage(response.data.message);
-      // Handle successful login (e.g., store token, redirect)
+      navigate('/dashboard');
+
     } catch (error) {
       setMessage(error.response ? error.response.data.message : 'An error occurred');
     }
@@ -73,7 +77,7 @@ const Login = () => {
             </div>
           </form>
 
-          {message && <p className="mt-2 text-center text-sm text-red-600">{message}</p>}
+          {message && <p className="mt-2 text-center text-sm text-blue-600">{message}</p>}
 
           <div className="text-sm mt-5 text-center">
             <Link to="/signup" className="font-medium text-blue-600 hover:text-blue-500">Register</Link>
