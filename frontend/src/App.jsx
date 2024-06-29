@@ -14,9 +14,6 @@ const App = () => {
           <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} />
           <Route path='/dashboard:id' element={<Dashboard />} />
-
-
-
           <Route path='/*' element={<NoPage/>} />
 
         </Routes>

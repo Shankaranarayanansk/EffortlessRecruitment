@@ -22,7 +22,7 @@ const createToken = async (payload) => {
 
 const createForgetToken = async (payload) => {
   let token = await jwt.sign(payload, secretKey, {
-    expiresIn: "10m",
+    expiresIn: "10m",//token expires in 10m
   });
   return token;
 };
